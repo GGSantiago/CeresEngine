@@ -10,40 +10,18 @@ void qf_testing () {
 	struct quaternion_f *qf_pointer = &qf;
 	printf("qf -> (x=%f, y=%f, z=%f, w=%f)\n", qf_pointer->x, qf_pointer->y, qf_pointer->z, qf_pointer->w);
   
-	normalize_qf (qf_pointer, qf_pointer);
+	normalize_q(qf_pointer, qf_pointer);
 	printf("qf -> (x=%f, y=%f, z=%f, w=%f)\n", qf_pointer->x, qf_pointer->y, qf_pointer->z, qf_pointer->w);
   
 	qf_pointer = (struct quaternion_f*) malloc(sizeof(struct quaternion_f));
-	multiplication_qf (&qf, &qf2, qf_pointer);
+	multiplication_q(&qf, &qf2, qf_pointer);
 	printf("qf -> (x=%f, y=%f, z=%f, w=%f)\n", qf_pointer->x, qf_pointer->y, qf_pointer->z, qf_pointer->w);
 
 }
 
-void qd_testing () {
-	printf("qd_testing\n");
-	struct quaternion_d qd = {.x = 4.5, .y = 7.23, .z = 100.543, .w = 2.2};
-	struct quaternion_d qd2 = {.x = 20, .y = 4, .z = 10, .w = 40};
-	struct quaternion_d *qd_pointer, *qd_pointer2, *result;
-	qd_pointer = (struct quaternion_d*) malloc(sizeof(struct quaternion_d));
-	qd_pointer2 = (struct quaternion_d*) malloc(sizeof(struct quaternion_d));
-	result = (struct quaternion_d*) malloc(sizeof(struct quaternion_d));
-	
-	printf ("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd.x, qd.y, qd.z, qd.w);
-	printf ("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd2.x, qd2.y, qd2.z, qd2.w);
-	
-	normalize_qd(&qd, qd_pointer);
-
-	normalize_qd(&qd2, qd_pointer2);
-	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd_pointer->x, qd_pointer->y, qd_pointer->z, qd_pointer->w);
-	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd_pointer2->x, qd_pointer2->y, qd_pointer2->z, qd_pointer2->w);
-	multiplication_qd(qd_pointer, qd_pointer2, result);
-	
-	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", result->x, result->y, result->z, result->w);
-}
 
 int main () {
   qf_testing();
-  qd_testing();
 
 return 0;
 }
