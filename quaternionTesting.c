@@ -1,4 +1,4 @@
-#include "quaternionMath.h"
+#include "ceresMath.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -16,7 +16,7 @@ void qf_testing () {
 	qf_pointer = (struct quaternion_f*) malloc(sizeof(struct quaternion_f));
 	multiplication_qf (&qf, &qf2, qf_pointer);
 	printf("qf -> (x=%f, y=%f, z=%f, w=%f)\n", qf_pointer->x, qf_pointer->y, qf_pointer->z, qf_pointer->w);
-	printf("qf -> (x=%f, y=%f, z=%f, w=%f)\n\n", qf.x, qf.y, qf.z, qf.w);
+
 }
 
 void qd_testing () {
@@ -29,16 +29,16 @@ void qd_testing () {
 	result = (struct quaternion_d*) malloc(sizeof(struct quaternion_d));
 	
 	printf ("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd.x, qd.y, qd.z, qd.w);
+	printf ("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd2.x, qd2.y, qd2.z, qd2.w);
 	
 	normalize_qd(&qd, qd_pointer);
-	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd_pointer->x, qd_pointer->y, qd_pointer->z, qd_pointer->w);
-	normalize_qd(&qd2, qd_pointer2);
-	
 
+	normalize_qd(&qd2, qd_pointer2);
+	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd_pointer->x, qd_pointer->y, qd_pointer->z, qd_pointer->w);
+	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", qd_pointer2->x, qd_pointer2->y, qd_pointer2->z, qd_pointer2->w);
 	multiplication_qd(qd_pointer, qd_pointer2, result);
 	
 	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n", result->x, result->y, result->z, result->w);
-	printf("qf -> (x=%lf, y=%lf, z=%lf, w=%lf)\n\n", qd.x, qd.y, qd.z, qd.w);
 }
 
 int main () {
